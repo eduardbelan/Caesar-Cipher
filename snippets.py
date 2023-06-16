@@ -14,20 +14,20 @@ def caesar(start_text, shift_amount, cipher_direction):
     Default: extended alpha
     Change alpha to "alphabet" for caesar_cipher_normal_alpha()
     """
-    alpha = alphabet_expanded
+    alpha = alphabet
     enc = "encode"
     dec = "decode"
     end_text = ""
-    if cipher_direction == "d":
+    if cipher_direction == "decode":
         shift_amount *= -1
     for char in start_text:
         if char in alpha:
-            position = "".join([alpha[(alpha.index(char) + shift_amount) % 67]])
+            position = "".join([alpha[(alpha.index(char) + shift_amount) % 26]])
             end_text += position
         else:
             end_text += char
 
-    if cipher_direction == "e":
+    if cipher_direction == "encode":
         print(f"The {enc}d text is: {end_text}")
     else:
         print(f"The {dec}d text is: {end_text}")
