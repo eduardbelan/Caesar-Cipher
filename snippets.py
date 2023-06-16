@@ -7,6 +7,32 @@ alphabet = [
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 ]
 
+
+def caesar(start_text, shift_amount, cipher_direction):
+    """
+    Determine the cipher message:
+    Default: extended alpha
+    Change alpha to "alphabet" for caesar_cipher_normal_alpha()
+    """
+    alpha = alphabet_expanded
+    enc = "encode"
+    dec = "decode"
+    end_text = ""
+    if cipher_direction == "d":
+        shift_amount *= -1
+    for char in start_text:
+        if char in alpha:
+            position = "".join([alpha[(alpha.index(char) + shift_amount) % 67]])
+            end_text += position
+        else:
+            end_text += char
+
+    if cipher_direction == "e":
+        print(f"The {enc}d text is: {end_text}")
+    else:
+        print(f"The {dec}d text is: {end_text}")
+
+
 # old version
 should_end = False
 while not should_end:
